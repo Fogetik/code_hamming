@@ -9,10 +9,12 @@ int number_control_bit(int count){
     int help = 1, number;
     for(int i = 1;; i++){
         help *= 2;
-        if(help == count){
-            return help + i + 1;
-        }else if(help > count)
-            return 0;
+        if(count > help - i - 1 && count < help + i + 1)
+            return count + i + 1;
+//        if(help == count){
+//            return help + i + 1;
+//        }else if(help > count)
+//            return 0;
     }
 }
 
@@ -23,12 +25,13 @@ int number_without_control_bit(int count){
         i++;
     }
 
-    help /= 2;
+//    help /= 2;
     i--;
-    if (help == count - i - 1)
-        return help;
-    else
-        return 0;
+    return count - i - 1;
+//    if (help == count - i - 1)
+//        return help;
+//    else
+//        return 0;
 }
 
 int* code_hamming(int* array, int number){
@@ -96,6 +99,7 @@ int check_exception(int* array, int number){
     array_copy = code_hamming(array_copy, number_without_control_bit(number));
     int count = 0;
     int degree_2 = 1;
+    bool equal = true;
     while(degree_2-1 < number){
         if (array_copy[degree_2-1] != array[degree_2-1])
             count += degree_2;

@@ -18,6 +18,15 @@ int main() {
         cout << after[i] << ", ";
     }
     cout << endl;
+
+    int c[] = {1, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1};
+    after = code_hamming(c, count_array + 1);
+    for (int i = 0; i < number_control_bit(count_array+1); i++){
+        cout << after[i] << ", ";
+    }
+    cout << endl;
+
+
     int f = check_exception(b, 21);
     cout << f << endl;
     return 0;
